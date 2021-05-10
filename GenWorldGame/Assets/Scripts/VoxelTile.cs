@@ -34,10 +34,10 @@ public class VoxelTile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //void Update()
+    //{
+    //    
+    //}
 
     /// <summary>
     /// Voxel color retrieval function
@@ -90,8 +90,10 @@ public class VoxelTile : MonoBehaviour
         //rayStart.y += 0.5f * VoxelSize + verticalLayer*VoxelSize;
         //rayStart.z -= 0.5f * VoxelSize;
 
+        int debugDuration = 100;    //  How many seconds will we see debug information 
+
         //  We trying to debug if script work by drawing a ray
-        Debug.DrawRay(rayStart, dir: direction*.1f, Color.blue, duration: 2);
+        Debug.DrawRay(rayStart, dir: direction*.1f, Color.blue, duration: debugDuration);
 
         //  We launch a ray that hits the collider and saves this point color
         if (Physics.Raycast(new Ray(origin: rayStart, direction), out RaycastHit hit, vox))
