@@ -4,7 +4,7 @@ using UnityEngine;
 public class VoxelTile : MonoBehaviour
 {
     //  Variable defining voxel size
-    public float VoxelSize = 0.5f;
+    public float VoxelSize = 0.1f;
     public int TileSideVoxels = 40;
 
     [HideInInspector] public byte[] ColorsRight;
@@ -13,7 +13,7 @@ public class VoxelTile : MonoBehaviour
     [HideInInspector] public byte[] ColorsBack;
 
     // Start is called before the first frame update
-    void Start()
+    public void CalculateSidesColors()
     {
         ColorsRight = new byte[TileSideVoxels * TileSideVoxels];
         ColorsForward = new byte[TileSideVoxels * TileSideVoxels];
@@ -99,15 +99,19 @@ public class VoxelTile : MonoBehaviour
         if (Physics.Raycast(new Ray(origin: rayStart, direction), out RaycastHit hit, vox))
         {
             //  Variable in which we save our meshCollider
-            Mesh mesh = meshCollider.sharedMesh;
+            //Mesh mesh = meshCollider.sharedMesh;
 
             //  Save the index of the triangle that the ray hit 
-            int hitTriangleVertex = mesh.triangles[hit.triangleIndex * 3];
+            //int hitTriangleVertex = mesh.triangles[hit.triangleIndex * 3];
 
             //  Get coordinates in texture
-            byte colorIndex = (byte)(mesh.uv[hitTriangleVertex].x * 256);
+            //byte colorIndex = (byte)(mesh.uv[hitTriangleVertex].x * 256);
 
-            //Debug.Log(colorIndex);
+            byte colorIndex = (byte)(hit.textureCoord.x * 256);
+
+            if (colorIndex == 0) Debug.LogWarning("Found color 0 in mesh palette, this can cause conflicts");
+
+            Debug.Log(colorIndex);
 
             return colorIndex;
         }
