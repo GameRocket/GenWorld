@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 public class VoxelTilePlacer : MonoBehaviour
 {
+    //  Time interval between attempts to add new voxels
+    public float waitingTime = 0.1f;
+
     //  Array for tile prefabs (Links to tiles already placed on the scene)
     public VoxelTile[] TilePrefabs;
 
@@ -17,20 +20,36 @@ public class VoxelTilePlacer : MonoBehaviour
     private VoxelTile[,] spawnedTiles;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         //  Initialize the array to fit the map 
         spawnedTiles = new VoxelTile[MapSize.x, MapSize.y];
+
+        foreach(VoxelTile tilePrefab in TilePrefabs)
+        {
+            tilePrefab.CalculateSidesColors();
+        }
 
         //  Calling the map generation function 
         StartCoroutine(routine: Generate());
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-    //    
-    //}
+    private void Update()
+    {
+        //  Restarting our generation when pressing the d key
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            StopAllCoroutines();
+
+            foreach(VoxelTile spawnedTile in spawnedTiles)
+            {
+                if (spawnedTile != null) Destroy(spawnedTile.gameObject);
+            }
+
+            StartCoroutine(routine: Generate());
+        }
+    }
 
     //  This function generates the whole map
     public IEnumerator Generate()
@@ -38,6 +57,18 @@ public class VoxelTilePlacer : MonoBehaviour
         //  Add the first tile to the center of the map
         PlaceTile(x: MapSize.x / 2, y: MapSize.y / 2);
 
+        /**
+        for ( int x = 1; x < MapSize.x - 1; x++ )
+        {
+            for ( int y = 1; y < MapSize.y - 1; y++)
+            {
+                yield return new WaitForSeconds(0.1f);
+
+                PlaceTile(x, y);
+            }
+        }
+        **/
+        
         //  Cycle for adding subsequent tiles
         while (true)
         {
@@ -58,10 +89,11 @@ public class VoxelTilePlacer : MonoBehaviour
                 }
             }
             //  We will wait 200 milliseconds before adding a new tile 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(waitingTime);
 
             PlaceTile(pos.x, pos.y);    //  Add the next tile to the map
         }
+        
     }
 
     //  Places a tile at a given location
@@ -87,7 +119,7 @@ public class VoxelTilePlacer : MonoBehaviour
         //  Variable for saving a randomly selected tile from the available ones 
         VoxelTile selectedTile = availableTiles[Random.Range(0, availableTiles.Count)];
 
-        spawnedTiles[x,y] = Instantiate(selectedTile, position: new Vector3(x, y: 0, z: y)*0.8f, Quaternion.identity);
+        spawnedTiles[x,y] = Instantiate(selectedTile, position: new Vector3(x, y: 0, z: y)*4.0f, Quaternion.identity);
     }
 
     //  Function to check if we can add a tile
@@ -95,19 +127,19 @@ public class VoxelTilePlacer : MonoBehaviour
     {
         if (existingTile == null) return true;
 
-        if (direction == Vector3.left)
+        if (direction == Vector3.right)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsRight, tileToAppend.ColorsLeft); //  Compare two arrays
         }
-        else if (direction == Vector3.right)
+        else if (direction == Vector3.left)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsLeft, tileToAppend.ColorsRight); //  Compare two arrays
         }
-        else if (direction == Vector3.right)
+        else if (direction == Vector3.forward)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsForward, tileToAppend.ColorsBack); //  Compare two arrays
         }
-        else if (direction == Vector3.right)
+        else if (direction == Vector3.back)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsBack, tileToAppend.ColorsForward); //  Compare two arrays
         }
