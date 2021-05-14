@@ -7,6 +7,10 @@ public class VoxelTile : MonoBehaviour
     public float VoxelSize = 0.1f;
     public int TileSideVoxels = 40;
 
+    //  Weight variable responsible for the chance of a specific pixel to spawn
+    [Range(1, 100)]         //  We indicate the boundaries in which the frequency can change 
+    public int Weight = 50;
+
     [HideInInspector] public byte[] ColorsRight;
     [HideInInspector] public byte[] ColorsForward;
     [HideInInspector] public byte[] ColorsLeft;
@@ -30,7 +34,7 @@ public class VoxelTile : MonoBehaviour
                 ColorsBack[y * TileSideVoxels + i] = GetVoxelColor(verticalLayer: y, horizontalOffset: i, Vector3.back);
             }
         }
-        Debug.Log(message: string.Join(separator:", ", ColorsRight));
+        //Debug.Log(message: string.Join(separator:", ", ColorsRight));
     }
 
     // Update is called once per frame
@@ -93,7 +97,7 @@ public class VoxelTile : MonoBehaviour
         int debugDuration = 100;    //  How many seconds will we see debug information 
 
         //  We trying to debug if script work by drawing a ray
-        Debug.DrawRay(rayStart, dir: direction*.1f, Color.blue, duration: debugDuration);
+        //Debug.DrawRay(rayStart, dir: direction*.1f, Color.blue, duration: debugDuration);
 
         //  We launch a ray that hits the collider and saves this point color
         if (Physics.Raycast(new Ray(origin: rayStart, direction), out RaycastHit hit, vox))
@@ -111,7 +115,7 @@ public class VoxelTile : MonoBehaviour
 
             if (colorIndex == 0) Debug.LogWarning("Found color 0 in mesh palette, this can cause conflicts");
 
-            Debug.Log(colorIndex);
+            //Debug.Log(colorIndex);
 
             return colorIndex;
         }
