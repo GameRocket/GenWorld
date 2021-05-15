@@ -11,7 +11,7 @@ public class VoxelTilePlacer : MonoBehaviour
     public float waitingTime = 0.1f;
 
     //  Array for tile prefabs (Links to tiles already placed on the scene)
-    public VoxelTile[] TilePrefabs;
+    public List<VoxelTile> TilePrefabs;
 
     //  Variable for the size of our map
     public Vector2Int MapSize = new Vector2Int(x: 10, y: 10);
@@ -28,6 +28,48 @@ public class VoxelTilePlacer : MonoBehaviour
         foreach(VoxelTile tilePrefab in TilePrefabs)
         {
             tilePrefab.CalculateSidesColors();
+        }
+
+        int countBeforeAdding = TilePrefabs.Count;
+        for (int i = 0; i < countBeforeAdding; i++)
+        {
+            VoxelTile clone;
+            switch (TilePrefabs[i].Rotation)
+            {
+                case VoxelTile.RotationType.OnlyRotation:
+                    break;
+
+                case VoxelTile.RotationType.TwoRotations:
+                    TilePrefabs[i].Weight /= 2;
+                    if (TilePrefabs[i].Weight <= 0) TilePrefabs[i].Weight = 1;
+
+                    clone = Instantiate(TilePrefabs[i], TilePrefabs[i].transform.position + Vector3.right, Quaternion.identity);
+                    clone.Rotate90();
+                    TilePrefabs.Add(clone);
+                    break;
+
+                case VoxelTile.RotationType.FourRotations:
+                    TilePrefabs[i].Weight /= 4;
+                    if (TilePrefabs[i].Weight <= 0) TilePrefabs[i].Weight = 1;
+
+                    clone = Instantiate(TilePrefabs[i], TilePrefabs[i].transform.position + Vector3.right, Quaternion.identity);
+                    clone.Rotate90();
+                    TilePrefabs.Add(clone);
+
+                    clone = Instantiate(TilePrefabs[i], TilePrefabs[i].transform.position + Vector3.right * 2, Quaternion.identity);
+                    clone.Rotate90();
+                    clone.Rotate90();
+                    TilePrefabs.Add(clone);
+
+                    clone = Instantiate(TilePrefabs[i], TilePrefabs[i].transform.position + Vector3.right * 3, Quaternion.identity);
+                    clone.Rotate90();
+                    clone.Rotate90();
+                    clone.Rotate90();
+                    TilePrefabs.Add(clone);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         //  Calling the map generation function 
@@ -54,46 +96,23 @@ public class VoxelTilePlacer : MonoBehaviour
     //  This function generates the whole map
     public IEnumerator Generate()
     {
-        //  Add the first tile to the center of the map
-        PlaceTile(x: MapSize.x / 2, y: MapSize.y / 2);
-
-        /**
-        for ( int x = 1; x < MapSize.x - 1; x++ )
+        for (int x = 1; x < MapSize.x - 1; x++)
         {
-            for ( int y = 1; y < MapSize.y - 1; y++)
+            for (int y = 1; y < MapSize.y - 1; y++)
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.02f);
 
                 PlaceTile(x, y);
             }
         }
-        **/
-        
-        //  Cycle for adding subsequent tiles
-        while (true)
+
+        yield return new WaitForSeconds(0.8f);
+        foreach (VoxelTile spawnedTile in spawnedTiles)
         {
-            Vector2Int pos; //  Variable for tile position
-            while (true)
-            {
-                //  We will generate a random position for the tile 
-                pos = new Vector2Int(x: Random.Range(1, MapSize.x - 1), y: Random.Range(1, MapSize.y - 1));
-
-                //  Checking if the generated position suits us
-                if (spawnedTiles[pos.x, pos.y] == null &&
-                    (spawnedTiles[pos.x+1, pos.y] != null ||
-                    spawnedTiles[pos.x-1, pos.y] != null ||
-                    spawnedTiles[pos.x, pos.y+1] != null ||
-                    spawnedTiles[pos.x, pos.y-1] != null))
-                {
-                    break;
-                }
-            }
-            //  We will wait 200 milliseconds before adding a new tile 
-            yield return new WaitForSeconds(waitingTime);
-
-            PlaceTile(pos.x, pos.y);    //  Add the next tile to the map
+            if (spawnedTile != null) Destroy(spawnedTile.gameObject);
         }
-        
+
+        StartCoroutine(Generate());
     }
 
     //  Places a tile at a given location
@@ -104,10 +123,10 @@ public class VoxelTilePlacer : MonoBehaviour
 
         foreach (VoxelTile tilePrefab in TilePrefabs)
         {
-            if( CanAppendTile(existingTile: spawnedTiles[x-1,y], tileToAppend: tilePrefab, Vector3.left) &&
-                CanAppendTile(existingTile: spawnedTiles[x - 1, y], tileToAppend: tilePrefab, Vector3.right) &&
-                CanAppendTile(existingTile: spawnedTiles[x - 1, y], tileToAppend: tilePrefab, Vector3.back) &&
-                CanAppendTile(existingTile: spawnedTiles[x - 1, y], tileToAppend: tilePrefab, Vector3.forward))
+            if( CanAppendTile(existingTile: spawnedTiles[x-1,y], tileToAppend: tilePrefab, Direction.Left) &&
+                CanAppendTile(existingTile: spawnedTiles[x - 1, y], tileToAppend: tilePrefab, Direction.Right) &&
+                CanAppendTile(existingTile: spawnedTiles[x - 1, y], tileToAppend: tilePrefab, Direction.Back) &&
+                CanAppendTile(existingTile: spawnedTiles[x - 1, y], tileToAppend: tilePrefab, Direction.Forward))
             {
                 availableTiles.Add(tilePrefab);
             }
@@ -117,29 +136,52 @@ public class VoxelTilePlacer : MonoBehaviour
 
         //  Choose a random tile from those that suit us
         //  Variable for saving a randomly selected tile from the available ones 
-        VoxelTile selectedTile = availableTiles[Random.Range(0, availableTiles.Count)];
+        VoxelTile selectedTile = GetRandomTile(availableTiles);
+        Vector3 position = selectedTile.VoxelSize * selectedTile.TileSideVoxels * new Vector3(x, y: 0, z: y);
+        spawnedTiles[x,y] = Instantiate(selectedTile, position, selectedTile.transform.rotation);
+    }
 
-        spawnedTiles[x,y] = Instantiate(selectedTile, position: new Vector3(x, y: 0, z: y)*4.0f, Quaternion.identity);
+    private VoxelTile GetRandomTile(List<VoxelTile> availableTiles)
+    {
+        List<float> chances = new List<float>();
+        for( int i = 0; i < availableTiles.Count; i++)
+        {
+            chances.Add(availableTiles[i].Weight);
+        }
+
+        float value = Random.Range(0, chances.Sum());
+        float sum = 0;
+
+        for(int i = 0; i < chances.Count; i++)
+        {
+            sum += chances[i];
+            if(value < sum)
+            {
+                return availableTiles[i];
+            }
+        }
+
+        return availableTiles[availableTiles.Count - 1];
     }
 
     //  Function to check if we can add a tile
-    private bool CanAppendTile(VoxelTile existingTile, VoxelTile tileToAppend, Vector3 direction)
+    private bool CanAppendTile(VoxelTile existingTile, VoxelTile tileToAppend, Direction direction)
     {
         if (existingTile == null) return true;
 
-        if (direction == Vector3.right)
+        if (direction == Direction.Right)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsRight, tileToAppend.ColorsLeft); //  Compare two arrays
         }
-        else if (direction == Vector3.left)
+        else if (direction == Direction.Left)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsLeft, tileToAppend.ColorsRight); //  Compare two arrays
         }
-        else if (direction == Vector3.forward)
+        else if (direction == Direction.Forward)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsForward, tileToAppend.ColorsBack); //  Compare two arrays
         }
-        else if (direction == Vector3.back)
+        else if (direction == Direction.Back)
         {
             return Enumerable.SequenceEqual(existingTile.ColorsBack, tileToAppend.ColorsForward); //  Compare two arrays
         }

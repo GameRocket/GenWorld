@@ -11,6 +11,15 @@ public class VoxelTile : MonoBehaviour
     [Range(1, 100)]         //  We indicate the boundaries in which the frequency can change 
     public int Weight = 50;
 
+    public RotationType Rotation;
+
+    public enum RotationType
+    {
+        OnlyRotation,
+        TwoRotations,
+        FourRotations
+    }
+
     [HideInInspector] public byte[] ColorsRight;
     [HideInInspector] public byte[] ColorsForward;
     [HideInInspector] public byte[] ColorsLeft;
@@ -37,6 +46,32 @@ public class VoxelTile : MonoBehaviour
         //Debug.Log(message: string.Join(separator:", ", ColorsRight));
     }
 
+    public void Rotate90()
+    {
+        transform.Rotate(0, 90, 0);
+
+        byte[] colorsRightNew = new byte[TileSideVoxels * TileSideVoxels];
+        byte[] colorsForwardNew = new byte[TileSideVoxels * TileSideVoxels];
+        byte[] colorsLeftNew = new byte[TileSideVoxels * TileSideVoxels];
+        byte[] colorsBackNew = new byte[TileSideVoxels * TileSideVoxels];
+
+        for (int layer = 0; layer < TileSideVoxels; layer++)
+        {
+            for (int offset = 0; offset < TileSideVoxels; offset++)
+            {
+                colorsRightNew[layer * TileSideVoxels + offset] = ColorsForward[layer * TileSideVoxels + TileSideVoxels - offset - 1];
+                colorsForwardNew[layer * TileSideVoxels + offset] = ColorsLeft[layer * TileSideVoxels + offset];
+                colorsLeftNew[layer * TileSideVoxels + offset] = ColorsBack[layer * TileSideVoxels + TileSideVoxels - offset - 1];
+                colorsBackNew[layer * TileSideVoxels + offset] = ColorsRight[layer * TileSideVoxels + offset];
+            }
+        }
+
+        ColorsRight = colorsRightNew;
+        ColorsForward = colorsForwardNew;
+        ColorsLeft = colorsLeftNew;
+        ColorsBack = colorsBackNew;
+    }
+
     // Update is called once per frame
     //void Update()
     //{
@@ -60,31 +95,36 @@ public class VoxelTile : MonoBehaviour
 
         //  Here we start a ray, setting from which coordinate it will go 
         Vector3 rayStart;
-
+        Vector3 rayDir;
         //  Checking the direction of the ray 
         if (direction == Vector3.right)
         {
             rayStart = meshCollider.bounds.min +
                         new Vector3(x: -half, y: 0, z: half + horizontalOffset * vox);
+            rayDir = Vector3.right;
         }
         else if(direction == Vector3.forward)
         {
             rayStart = meshCollider.bounds.min +
                        new Vector3(x: half + horizontalOffset * vox, y: 0, z: -half);
+            rayDir = Vector3.forward;
         }
         else if (direction == Vector3.left)
         {
             rayStart = meshCollider.bounds.max +
                        new Vector3(x: half, y:0, z:-half - (TileSideVoxels - horizontalOffset - 1) * vox);
+            rayDir = Vector3.left;
         }
         else if (direction == Vector3.back)
         {
             rayStart = meshCollider.bounds.max +
                        new Vector3(x: -half - (TileSideVoxels - horizontalOffset - 1) * vox, y: 0, z: half);
+            rayDir = Vector3.back;
         }
         else
         {
-            throw new ArgumentException("Wrong direction value, should be Vector3.left/right/back/forward", nameof(direction));
+            throw new ArgumentException("Wrong direction value, should be Direction.left/right/back/forward",
+                nameof(direction));
         }
 
         rayStart.y = meshCollider.bounds.min.y + half + verticalLayer * vox;
@@ -100,7 +140,7 @@ public class VoxelTile : MonoBehaviour
         //Debug.DrawRay(rayStart, dir: direction*.1f, Color.blue, duration: debugDuration);
 
         //  We launch a ray that hits the collider and saves this point color
-        if (Physics.Raycast(new Ray(origin: rayStart, direction), out RaycastHit hit, vox))
+        if (Physics.Raycast(new Ray(rayStart, rayDir), out RaycastHit hit, vox))
         {
             //  Variable in which we save our meshCollider
             //Mesh mesh = meshCollider.sharedMesh;

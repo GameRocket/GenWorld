@@ -227,6 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 50
+  Rotation: 0
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -335,6 +337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 50
+  Rotation: 2
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -443,10 +447,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 20
+  Rotation: 1
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
   ColorsBack: 
+--- !u!1 &360461858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+  m_PrefabInstance: {fileID: 1762524100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &360461860
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360461858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
 --- !u!1001 &364594364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,11 +481,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 60b0c2a9292f72e4b951253c3b893a78, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60b0c2a9292f72e4b951253c3b893a78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -171.65154
+      value: -166.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60b0c2a9292f72e4b951253c3b893a78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -551,6 +576,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 10
+  Rotation: 2
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -601,7 +628,7 @@ MonoBehaviour:
   waitingTime: 0.05
   TilePrefabs:
   - {fileID: 364594369}
-  - {fileID: 1541570777}
+  - {fileID: 858115318}
   - {fileID: 1347728344}
   - {fileID: 742333257}
   - {fileID: 439312208}
@@ -721,6 +748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 70
+  Rotation: 0
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -829,6 +858,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 20
+  Rotation: 2
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -1030,6 +1061,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 50
+  Rotation: 2
+  ColorsRight: 
+  ColorsForward: 
+  ColorsLeft: 
+  ColorsBack: 
+--- !u!1 &858115316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+  m_PrefabInstance: {fileID: 1762524100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &858115317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+  m_PrefabInstance: {fileID: 1762524100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &858115318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858115316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d47c3a8a92c1b4f8b750fe551af2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VoxelSize: 0.1
+  TileSideVoxels: 40
+  Weight: 30
+  Rotation: 2
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -1221,6 +1284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 50
+  Rotation: 2
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -1252,9 +1317,9 @@ Transform:
   m_LocalPosition: {x: 58.731537, y: -29.172737, z: -70.05736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1336732906}
   - {fileID: 364594365}
-  - {fileID: 1541570773}
+  - {fileID: 858115317}
+  - {fileID: 1336732906}
   - {fileID: 1347728340}
   - {fileID: 742333253}
   - {fileID: 439312204}
@@ -1375,6 +1440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 20
+  Rotation: 2
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -1483,6 +1550,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 20
+  Rotation: 1
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -1496,7 +1565,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e41f4131ac3750849b428a4cb54650b1, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e41f4131ac3750849b428a4cb54650b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1591,6 +1660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 20
+  Rotation: 1
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -1699,114 +1770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
-  ColorsRight: 
-  ColorsForward: 
-  ColorsLeft: 
-  ColorsBack: 
---- !u!1001 &1541570772
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1173756318}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -165.85153
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 253.46002
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -229.2289
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7635826562936255635, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c813bf257142d7348b92aa4f4d45571b, type: 2}
-    - target: {fileID: 919132149155446097, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-      propertyPath: m_Name
-      value: ArborSecond
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
---- !u!4 &1541570773 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-  m_PrefabInstance: {fileID: 1541570772}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1541570774 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-  m_PrefabInstance: {fileID: 1541570772}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1541570775
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541570774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
---- !u!1 &1541570776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
-  m_PrefabInstance: {fileID: 1541570772}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1541570777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541570776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d47c3a8a92c1b4f8b750fe551af2d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VoxelSize: 0.1
-  TileSideVoxels: 40
+  Weight: 50
+  Rotation: 0
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -1915,6 +1880,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 50
+  Rotation: 1
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
@@ -2023,10 +1990,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 50
+  Rotation: 0
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
   ColorsBack: 
+--- !u!1001 &1762524100
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1173756318}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -172.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 254.26004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -228.61348
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c813bf257142d7348b92aa4f4d45571b, type: 2}
+    - target: {fileID: 919132149155446097, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
+      propertyPath: m_Name
+      value: ArborSecond
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f4cac39844f6a949935bf208878156e, type: 3}
 --- !u!1001 &2014901817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2131,6 +2161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VoxelSize: 0.1
   TileSideVoxels: 40
+  Weight: 30
+  Rotation: 1
   ColorsRight: 
   ColorsForward: 
   ColorsLeft: 
