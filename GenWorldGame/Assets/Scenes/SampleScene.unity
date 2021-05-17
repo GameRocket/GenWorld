@@ -343,6 +343,67 @@ MonoBehaviour:
   ColorsForward: 
   ColorsLeft: 
   ColorsBack: 
+--- !u!1 &206926810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 206926812}
+  - component: {fileID: 206926811}
+  m_Layer: 0
+  m_Name: Voxel WFC Tile Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &206926811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206926810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ee185947b549143806292592ef64c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TilePrefabs:
+  - {fileID: 364594369}
+  - {fileID: 858115318}
+  - {fileID: 1347728344}
+  - {fileID: 742333257}
+  - {fileID: 439312208}
+  - {fileID: 2014901822}
+  - {fileID: 1232375163}
+  - {fileID: 344770773}
+  - {fileID: 1573467255}
+  - {fileID: 1108579360}
+  - {fileID: 178578676}
+  - {fileID: 1587489957}
+  - {fileID: 98311380}
+  - {fileID: 1301275212}
+  - {fileID: 634096380}
+  - {fileID: 1336732910}
+  MapSize: {x: 10, y: 10}
+--- !u!4 &206926812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206926810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &344770768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -593,12 +654,12 @@ GameObject:
   - component: {fileID: 416002592}
   - component: {fileID: 416002593}
   m_Layer: 0
-  m_Name: Voxel Tile Placer
+  m_Name: Weight-Direction Generation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &416002592
 Transform:
   m_ObjectHideFlags: 0
@@ -611,7 +672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &416002593
 MonoBehaviour:
@@ -1333,6 +1394,68 @@ Transform:
   - {fileID: 98311376}
   - {fileID: 1301275208}
   - {fileID: 634096376}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1209742371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209742373}
+  - component: {fileID: 1209742372}
+  m_Layer: 0
+  m_Name: Classic Pseudo-Random Voxel Generation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1209742372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209742371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa08d99ed6d48e4396b4bb54399dc42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitingTime: 0.1
+  TilePrefabs:
+  - {fileID: 364594369}
+  - {fileID: 858115318}
+  - {fileID: 1347728344}
+  - {fileID: 742333257}
+  - {fileID: 439312208}
+  - {fileID: 2014901822}
+  - {fileID: 1232375163}
+  - {fileID: 344770773}
+  - {fileID: 1573467255}
+  - {fileID: 1108579360}
+  - {fileID: 178578676}
+  - {fileID: 1587489957}
+  - {fileID: 98311380}
+  - {fileID: 1301275212}
+  - {fileID: 634096380}
+  - {fileID: 1336732910}
+  MapSize: {x: 20, y: 20}
+--- !u!4 &1209742373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209742371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -108.08265, y: 243.36713, z: -300.4336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
