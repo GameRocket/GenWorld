@@ -141,8 +141,6 @@ public class VoxelTilePlacerWfc : MonoBehaviour
 
                 if (possibleTilesHere.Count == 0)
                 {
-                    // Зашли в тупик, в этих координатах невозможен ни один тайл. Попробуем ещё раз, разрешим все тайлы
-                    // в этих и соседних координатах, и посмотрим устаканится ли всё
                     possibleTilesHere.AddRange(TilePrefabs);
                     possibleTiles[position.x + 1, position.y] = new List<VoxelTile>(TilePrefabs);
                     possibleTiles[position.x - 1, position.y] = new List<VoxelTile>(TilePrefabs);
