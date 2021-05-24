@@ -8,6 +8,13 @@ The [quick guide to GitHub for Unity](docs/using/quick-guide.md)
 
 More [in-depth information](docs/readme.md)
 
+## Standard set of voxels
+
+Together with the project, a set of 16 standard voxels has already been added inside, which can later be replaced with your own. But now you can run all the methods and algorithms along with a standard set of voxels for debugging, testing, or to study how the tool works. Below is an image showing all 16 models and their names. All voxel models were created using "MagicaVoxel". https://ephtracy.github.io/
+
+![Voxels](https://user-images.githubusercontent.com/33583122/119365740-e9f3b780-bcb8-11eb-9a27-08fc812a51fc.png)
+
+
 ## License
 
 **[MIT](LICENSE)**
