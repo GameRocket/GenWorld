@@ -8,6 +8,11 @@ The [quick guide to GitHub for Unity](docs/using/quick-guide.md)
 
 More [in-depth information](docs/readme.md)
 
+## 🔌 Requirements
+
+  * Git
+  * Unity
+
 ## :white_square_button: Standard set of voxels
 
 Together with the project, a set of 16 standard voxels has already been added inside, which can later be replaced with your own. But now you can run all the methods and algorithms along with a standard set of voxels for debugging, testing, or to study how the tool works. Below is an image showing all 16 models and their names. All voxel models were created using "MagicaVoxel". https://ephtracy.github.io/
@@ -17,7 +22,7 @@ Together with the project, a set of 16 standard voxels has already been added in
 ## 📷 Screenshot
 
 ![GitHub Logo](https://i.ibb.co/KDWH2N5/Procedural.png)
-
+  
 ## :bookmark_tabs: License
 
 **[MIT](LICENSE)**
