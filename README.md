@@ -2,7 +2,7 @@
 
 GenWorld - a procedural generation toolkit for the "Unity" game engine. Allows you to procedurally generate content for a scene from voxels. Uses various algorithms and methods where you can change the frequency of appearance, size and color of voxel models. 
 
-## :notebook_with_decorative_cover: How to use
+## :notebook_with_decorative_cover: More About
 
 The [quick guide to GitHub for Unity](docs/using/quick-guide.md)
 
@@ -11,7 +11,7 @@ More [in-depth information](docs/readme.md)
 ## 🔌 Requirements
 
   * Git
-  * Unity
+  * Unity (version 2020.3.3f1)
 
 ## :white_square_button: Standard set of voxels
 
@@ -19,9 +19,19 @@ Together with the project, a set of 16 standard voxels has already been added in
 
 ![Voxels](https://user-images.githubusercontent.com/33583122/119365740-e9f3b780-bcb8-11eb-9a27-08fc812a51fc.png)
 
-## 📷 Screenshot
+## :speech_balloon: How to interact
 
-![GitHub Logo](https://i.ibb.co/KDWH2N5/Procedural.png)
+The project uses various buttons for user interaction with scene generation.
+
+  * First press the button to select the algorithm;
+  * You can press "Classic Pseudo-Random Voxel Generation";
+  * You can press "Weight-Direction Voxel Generation";
+  * You can press "Wave Function Collapse Voxel Generation";
+  * You can press "Clear" button to clear the scene from voxels;
+
+## 📷 GUI Screenshot
+
+![GitHub Logo](https://i.ibb.co/PFCWS01/Gen-World-1-0.png)
   
 ## :bookmark_tabs: License
 
