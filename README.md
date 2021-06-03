@@ -4,9 +4,13 @@ GenWorld - a procedural generation toolkit for the "Unity" game engine. Allows y
 
 ## :notebook_with_decorative_cover: More About
 
-The [quick guide to GitHub for Unity](docs/using/quick-guide.md)
+*The project implements scene generation from voxels using three different algorithms.*
 
-More [in-depth information](docs/readme.md)
+**Pseudo-Random Generation ”algorithm**. It is a simple generation algorithm based on adding voxels to the scene based on their color matching. This is a simple and classic method that first adds one random voxel and then selects another random voxel from all possible ones and checks if it can be added to already added voxels and so on until the whole scene is filled with random voxels.
+
+**Weight-Direction Generation Algorithm**. This is a modified version of the previous algorithm, which was developed by improving the usual classical algorithm. second, it can rotate voxels in different directions, which increases the likelihood of adding them to the scene, but reduces speed. 
+
+**Wave-Function Collapse algorithm**. Generation using WFC becomes intuitive, using this algorithm we show the program an example and get endless variants of it. There is also an aspect of collaboration with the machine, as the result obtained can be surprising and sometimes lead to a change in design. The algorithm calculates all possible options that are initially in the super position and selects the best one 
 
 ## 🔌 Requirements
 
