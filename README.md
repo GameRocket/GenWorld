@@ -38,7 +38,7 @@ The project uses various buttons for user interaction with scene generation.
 
 ## 📷 GUI Screenshot
 
-![GitHub Logo](https://i.ibb.co/PFCWS01/Gen-World-1-0.png)
+![GenWorld_1_1](https://user-images.githubusercontent.com/33583122/120931673-5203be00-c6fb-11eb-82c7-22c1c6157e4d.png)
   
 ## :bookmark_tabs: License
 
