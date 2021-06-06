@@ -1,6 +1,8 @@
 # :game_die: GenWorld
 
-GenWorld - a procedural generation toolkit for the "Unity" game engine. Allows you to procedurally generate content for a scene from voxels. Uses various algorithms and methods where you can change the frequency of appearance, size and color of voxel models. 
+![genworldlogo](https://user-images.githubusercontent.com/33583122/120930789-79588c00-c6f7-11eb-8270-8921d8157012.png)
+
+**GenWorld** - a procedural generation toolkit for the "Unity" game engine. Allows you to procedurally generate content for a scene from voxels. Uses various algorithms and methods where you can change the frequency of appearance, size and color of voxel models. 
 
 ## :notebook_with_decorative_cover: More About
 
