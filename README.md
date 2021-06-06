@@ -1,6 +1,6 @@
 # :game_die: GenWorld
 
-![genworldlogo](https://user-images.githubusercontent.com/33583122/120930789-79588c00-c6f7-11eb-8270-8921d8157012.png)
+![genworldlogo](https://user-images.githubusercontent.com/33583122/120931427-26cc9f00-c6fa-11eb-9b93-ae1c1fb5ec13.png)
 
 **GenWorld** - a procedural generation toolkit for the "Unity" game engine. Allows you to procedurally generate content for a scene from voxels. Uses various algorithms and methods where you can change the frequency of appearance, size and color of voxel models. 
 
@@ -34,6 +34,7 @@ The project uses various buttons for user interaction with scene generation.
   * You can press "Weight-Direction Voxel Generation";
   * You can press "Wave Function Collapse Voxel Generation";
   * You can press "Clear" button to clear the scene from voxels;
+  * You can press "Close game application" to quit from game;
 
 ## 📷 GUI Screenshot
 
