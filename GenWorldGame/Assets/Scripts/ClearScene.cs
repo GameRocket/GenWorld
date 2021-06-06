@@ -21,4 +21,10 @@ public class ClearScene : MonoBehaviour
         }
 
     }
+
+    //  Quit from game scene
+    public void QuitGameScene()
+    {
+        Application.Quit();
+    }
 }
